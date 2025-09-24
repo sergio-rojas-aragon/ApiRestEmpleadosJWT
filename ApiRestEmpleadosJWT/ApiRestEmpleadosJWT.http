@@ -1,4 +1,4 @@
-@ApiRestEmpleadosJWT_HostAddress = http://localhost:5280
+@ApiRestEmpleadosJWT_HostAddress = http://localhost:5197
 
 GET {{ApiRestEmpleadosJWT_HostAddress}}/weatherforecast/
 Accept: application/json

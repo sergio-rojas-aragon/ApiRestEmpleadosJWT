@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiRestEmpleadosJWT", "ApiRestEmpleadosJWT\ApiRestEmpleadosJWT.csproj", "{B0C337D1-79CE-486C-1AB9-BD35FB49D397}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiRestEmpleadosJWT", "ApiRestEmpleadosJWT\ApiRestEmpleadosJWT.csproj", "{CD283211-64C4-47B4-BEE6-64907A4B9D3F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,12 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{B0C337D1-79CE-486C-1AB9-BD35FB49D397}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B0C337D1-79CE-486C-1AB9-BD35FB49D397}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B0C337D1-79CE-486C-1AB9-BD35FB49D397}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B0C337D1-79CE-486C-1AB9-BD35FB49D397}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD283211-64C4-47B4-BEE6-64907A4B9D3F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD283211-64C4-47B4-BEE6-64907A4B9D3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD283211-64C4-47B4-BEE6-64907A4B9D3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD283211-64C4-47B4-BEE6-64907A4B9D3F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {53B6155E-7C8A-43A2-98E8-88AF77DF57D9}
 	EndGlobalSection
 EndGlobal
