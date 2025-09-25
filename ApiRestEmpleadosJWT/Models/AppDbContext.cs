@@ -1,7 +1,6 @@
-﻿using ApiRestEmpleadosJWT.Models;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 
-namespace ApiRestEmpleadosJWT.Persistencia
+namespace ApiRestEmpleadosJWT.Models
 {
     public class AppDbContext : DbContext
     {

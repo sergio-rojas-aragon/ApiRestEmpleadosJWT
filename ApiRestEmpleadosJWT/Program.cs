@@ -1,5 +1,5 @@
 using ApiRestEmpleadosJWT.Interfaces;
-using ApiRestEmpleadosJWT.Persistencia;
+using ApiRestEmpleadosJWT.Models;
 using ApiRestEmpleadosJWT.Services;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,6 +14,7 @@ builder.Services.AddDbContext<AppDbContext>(op =>
 
 // se registra servicio para interfaz
 builder.Services.AddScoped<IEmpleadoService, EmpleadoService>();
+builder.Services.AddScoped<ILoginService, LoginService>();
 builder.Services.AddControllers();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

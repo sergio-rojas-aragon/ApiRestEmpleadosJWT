@@ -1,6 +1,5 @@
 ﻿using ApiRestEmpleadosJWT.Interfaces;
 using ApiRestEmpleadosJWT.Models;
-using ApiRestEmpleadosJWT.Persistencia;
 using Microsoft.EntityFrameworkCore;
 
 namespace ApiRestEmpleadosJWT.Services
