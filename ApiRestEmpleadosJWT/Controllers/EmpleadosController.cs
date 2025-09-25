@@ -1,6 +1,7 @@
 ﻿using ApiRestEmpleadosJWT.Interfaces;
 using ApiRestEmpleadosJWT.Models;
 using ApiRestEmpleadosJWT.Validaciones;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -9,6 +10,7 @@ namespace ApiRestEmpleadosJWT.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class EmpleadosController : ControllerBase
     {
         private readonly IEmpleadoService _es;
@@ -60,7 +62,7 @@ namespace ApiRestEmpleadosJWT.Controllers
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] EmpleadoCUDTO emp)
         {
-
+            // validaciones utilizando FluentValidation
             EmpleadoValidacion _ev = new EmpleadoValidacion();
             var val = _ev.Validate(emp);
             if (!val.IsValid)
@@ -74,9 +76,19 @@ namespace ApiRestEmpleadosJWT.Controllers
                 return StatusCode(StatusCodes.Status400BadRequest, errores);
             }
 
-            var _emp = await _es.CreateAsync(new EmpleadoDTO { Cargo= emp.Cargo, Email=emp.Email, fechaIngreso=emp.fechaIngreso, nombreCompleto=emp.nombreCompleto  });
+            try
+            {
+                var _emp = await _es.CreateAsync(new EmpleadoDTO { Cargo = emp.Cargo, Email = emp.Email, fechaIngreso = emp.fechaIngreso, nombreCompleto = emp.nombreCompleto });
+                return StatusCode(StatusCodes.Status201Created, _emp);
 
-            return StatusCode(StatusCodes.Status201Created, _emp);
+            }
+            catch (Exception ex)
+            {
+
+                return StatusCode(StatusCodes.Status500InternalServerError, ex);
+            }
+
+
 
         }
 
@@ -85,7 +97,7 @@ namespace ApiRestEmpleadosJWT.Controllers
         public async Task<IActionResult> Put(int id, [FromBody] EmpleadoCUDTO emp)
         {
 
-            // validaciones
+            // validaciones utilizando FluentValidation
 
             EmpleadoValidacion _ev = new EmpleadoValidacion();
             var val = _ev.Validate(emp);
@@ -114,10 +126,10 @@ namespace ApiRestEmpleadosJWT.Controllers
                     return Ok(_emp);
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                throw;
+                return StatusCode(StatusCodes.Status500InternalServerError, ex);
             }
 
         }
@@ -126,15 +138,23 @@ namespace ApiRestEmpleadosJWT.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            var _emp = await _es.DeleteAsync(id);
-            if (!_emp)
+            try
             {
-                return NotFound();
+                var _emp = await _es.DeleteAsync(id);
+                if (!_emp)
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    return Ok(_emp);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                return Ok(_emp);
+                return StatusCode(StatusCodes.Status500InternalServerError, ex);
             }
+
         }
     }
 }
